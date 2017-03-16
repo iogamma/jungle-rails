@@ -28,10 +28,16 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= link_to cart_path do %>
-            <%= fa_icon "fa-sign-in" %> Sign In
+          <%= link_to users_path do %>
+            <%= fa_icon "sign-in" %> Sign In
           <% end %>
         </li>
+        <li>
+          <%= link_to new_user_path do %>
+            <%= fa_icon "user" %> Register
+          <% end %>
+        </li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
