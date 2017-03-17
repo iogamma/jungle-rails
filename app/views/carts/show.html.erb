@@ -54,9 +54,14 @@
   </section>
 
 <% else %>
-
-  <div> HEY! </div>
-
+  <div>
+    Hi there, your cart is currently empty. Go back to keep shopping!
+  </div>
+  <div>
+    <%= link_to root_path, class: 'btn-btn-primary' do%>
+      <%= fa_icon "arrow-left" %> Back to Jungle Shopping
+    <% end %>
+  </div>
 <% end %>
 
 </section>
