@@ -28,13 +28,17 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= link_to logout_user_path do %>
-            <%= fa_icon "sign-out" %> Sign Out
+          <% unless current_user %>
+            <%= link_to login_user_path do %>
+              <%= fa_icon "sign-in" %> Sign In
+            <% end %>
           <% end %>
         </li>
         <li>
-          <%= link_to logout_user_path do %>
-            <%= fa_icon "sign-out" %> Sign Out
+          <% if current_user %>
+            <%= link_to logout_user_path do %>
+              <%= fa_icon "sign-out" %> Sign Out
+            <% end %>
           <% end %>
         </li>
         <li>

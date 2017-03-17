@@ -17,8 +17,6 @@ class CartsController < ApplicationController
   def remove_item
     product_id = params[:product_id].to_s
 
-    puts "REMOVE_ITEM DEFINITION: #{params}"
-
     item = cart[product_id] || { "quantity" => 1 }
     item["quantity"] -= 1
     cart[product_id] = item
