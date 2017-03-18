@@ -5,10 +5,16 @@
       <h4><%= product.name %></h4>
     <% end %>
   </header>
-  <p class="description">
-    <%= product.description %>
-  </p>
-
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><%= product.description %></td>
+      </tr>
+      <tr>
+        <td>Average Rating: <%= number_to_human product.reviews.average(:rating) %></td>
+      </tr>
+    </tbody>
+  </table>
   <footer class="actions">
     <% if product.quantity > 0 %>
       <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', method: :put do %>
