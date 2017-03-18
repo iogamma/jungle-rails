@@ -1,12 +1,12 @@
-<article class="review">
-  <table>
-    <tr class="username">
-      <td><%= review.user.first_name %></td>
-    </tr>
-    <tr class = "description">
-      <td><%= review.description %></td>
-    </tr>
-    <tr class="rating">
-      <td><%= review.rating %></td>
-    </tr>
-</article>
+<!-- Partial for products/show.html.erb -->
+  <tr>
+    <td><%= review.user.first_name %></td>
+    <td><%= review.rating %></td>
+    <td><%= review.description %></td>
+    <td><%= review.created_at %></td>
+    <% if review.user == current_user %>
+      <td><%= link_to fa_icon('trash'), [@product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %></td>
+    <% end %>
+  </tr>
+
+
