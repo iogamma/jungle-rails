@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>Thank you for your order! Here is your receipt.</h2>
+    <table border="1">
+      <tr>
+        <th width="33.33%">Item</th>
+        <th width="25%">Price</th>
+        <th width="8.33%">Quantity</th>
+        <th width="33.33%">Item Total</th>
+      </tr>
+      <% @order_details.each do |item| %>
+      <tr align="center">
+        <td><%= item.product.name %></td>
+        <td><%= humanized_money_with_symbol item.product.price %></td>
+        <td><%= item.product.quantity %></td>
+        <td><%= humanized_money_with_symbol item.product.price * item.product.quantity %>
+      </tr>
+      <% end %>
+      <tr >
+        <td></td>
+        <td></td>
+        <td align="right" col-span="3"><strong>Total:</strong></td>
+        <td align="center"><%= humanized_money_with_symbol @order.total %></td>
+      </tr>
+    </table>
+  </body>
+</html>
