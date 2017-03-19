@@ -8,6 +8,9 @@
 .DS_Store
 .vscode/
 
+# Test Files
+test/
+
 >>>>>>> feature/admin-categories
 # Ignore all logfiles and tempfiles.
 /log/*
