@@ -158,21 +158,21 @@ User.create({
 Review.create({
   user_id: 1,
   product_id: 1,
-  description: 'This product is rad!',
+  feedback: 'This product is rad!',
   rating: 5
 })
 
 Review.create({
   user_id: 2,
   product_id: 3,
-  description: 'This product number 2 is not so good!',
+  feedback: 'This product number 2 is not so good!',
   rating: 2
 })
 
 Review.create({
   user_id: 2,
   product_id: 3,
-  description: 'This product number 3 is awesome!',
+  feedback: 'This product number 3 is awesome!',
   rating: 5
 })
 
