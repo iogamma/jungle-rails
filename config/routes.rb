@@ -2,13 +2,12 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
 
-  resource :user, only: [] do
-    get '/login' => 'sessions#new'
-    post '/login' => 'sessions#create'
-    get '/logout' => 'sessions#destroy'
-    get '/register' => 'users#new'
-    post '/register' => 'users#create'
-  end
+  get :register, to: 'users#new'
+  post :register, to: 'users#create'
+
+  get :login, to: 'sessions#new'
+  post :login, to: 'sessions#create'
+  delete :logout, to: 'sessions#destroy'
 
   resources :products, only: [:index, :show] do
     resources :reviews, only: [:create, :destroy]
