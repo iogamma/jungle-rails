@@ -46,7 +46,7 @@
     <div class="row">
       <div class="col-sm-12">
         <table class="table">
-        <% unless @product.reviews.empty? || !current_user %>
+        <% unless @product.reviews.empty? %>
           <thead>
             <tr>
               <th class="col-xs-2"></th>
@@ -61,43 +61,39 @@
           </tbody>
         <% else %>
           <tbody>
-          <% if current_user %>
             <tr>
               <td>Be the first to review this product!</td>
             </tr>
-          <% else %>
-            <tr>
-              <td><%= link_to "Log in", login_path %> or <%= link_to "Register", register_path %> to leave a feedback.</td>
-            </tr>
-          <% end %>
           </tbody>
         <% end %>
         </table>
       </div>
-  </div>
+    </div>
 
-<% if current_user %>
-  <div class="row">
-    <div class="col-sm-12">
-      <h2>Leave a Review!</h2>
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Leave a Review!</h2>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <%= form_for [@product, @review] do |f| %>
-        <div class="form-group">
-          <%= f.label :feedback %>
-          <%= f.text_field :feedback, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label "Rating: " %>
-          <%= f.select :rating, [5, 4, 3, 2, 1] %>
-        </div>
-        <%= f.submit 'Submit', class: 'btn btn-primary'  %>
+    <div class="row">
+      <div class="col-sm-12">
+      <% if current_user %>
+        <%= form_for [@product, @review] do |f| %>
+          <div class="form-group">
+            <%= f.label :feedback %>
+            <%= f.text_field :feedback, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label "Rating: " %>
+            <%= f.select :rating, [5, 4, 3, 2, 1] %>
+          </div>
+          <%= f.submit 'Submit', class: 'btn btn-primary'  %>
+        <% end %>
+      <% else %>
+        <span>Please <%= link_to "log in", login_path %> or <%= link_to "register", register_path %> to leave a feedback.</span>
       <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
 
   </article>
 
