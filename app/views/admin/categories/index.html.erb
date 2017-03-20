@@ -8,14 +8,24 @@
     <%= link_to '+ New Category', [:new, :admin, :category], class: 'btn btn-info' %>
   </div>
 
-  <div class="panel panel-default products">
+<% unless flash.empty? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% flash.keys.each do |k| %>
+        <li><%= flash[k] %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="panel panel-default categories">
 
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Category</th>
-          <th>Number of Products in Category</th>
-          <th></th>
+          <th class="col-xs-8">Category Name</th>
+          <th class="col-xs-3">Number of Products</th>
+          <th class="col-xs-1"></th>
         </tr>
       </thead>
       <tbody>

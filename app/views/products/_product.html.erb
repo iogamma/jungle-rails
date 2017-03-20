@@ -10,9 +10,11 @@
       <tr>
         <td><%= product.description %></td>
       </tr>
+    <% if product.reviews.average(:rating) %>
       <tr>
-        <td>Average Rating: <%= number_to_human product.reviews.average(:rating) %></td>
+        <td>Average Rating: <%= number_with_precision product.reviews.average(:rating), {precision: 1} %></td>
       </tr>
+    <% end %>
     </tbody>
   </table>
   <footer class="actions">

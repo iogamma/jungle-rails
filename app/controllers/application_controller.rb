@@ -2,6 +2,16 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  around_action :rescue_from_fk_constraint, only: [:destroy]
+
+  def rescue_from_fk_constraint
+    begin
+      yield
+    rescue ActiveRecord::InvalidForeignKey
+      flash[:alert] = "You have other table(s) that rely on this property"
+      redirect_to :back
+    end
+  end
 
   private
 

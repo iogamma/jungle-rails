@@ -2,6 +2,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def index
     @categories = Category.all
+    @category = Category.new
   end
 
   def new
@@ -12,7 +13,7 @@ class Admin::CategoriesController < Admin::BaseController
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to [:admin, :categories], notice: 'Category created!'
+      redirect_to [:admin, :categories], notice: "Category: '#{@category.name}' created!"
     else
       render :new
     end
@@ -20,8 +21,9 @@ class Admin::CategoriesController < Admin::BaseController
 
   def destroy
     @category = Category.find params[:id]
+    category_name = @category.name
     @category.destroy
-    redirect_to [:admin, :categories], notice: 'Category deleted!'
+    redirect_to [:admin, :categories], notice: "Category: '#{category_name}' deleted!"
   end
 
   private
