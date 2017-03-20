@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   around_action :rescue_from_fk_constraint, only: [:destroy]
 
+  private
+
   def rescue_from_fk_constraint
     begin
       yield
@@ -12,8 +14,6 @@ class ApplicationController < ActionController::Base
       redirect_to :back
     end
   end
-
-  private
 
   def cart
     # value = cookies[:cart] || JSON.generate({})
@@ -37,6 +37,5 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to login_user_path unless current_user
   end
-
 
 end
