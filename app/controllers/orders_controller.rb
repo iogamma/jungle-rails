@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
     if order.valid?
       empty_cart!
       OrderMailer.order_receipt_email(order).deliver_later
-      redirect_to order
+      redirect_to orde
     else
       redirect_to cart_path, error: order.errors.full_messages.first
     end
