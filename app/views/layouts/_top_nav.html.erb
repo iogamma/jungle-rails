@@ -30,20 +30,20 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           <% unless current_user %>
-            <%= link_to login_user_path do %>
+            <%= link_to login_path do %>
               <%= fa_icon "sign-in" %> Sign In
             <% end %>
           <% end %>
         </li>
         <li>
           <% if current_user %>
-            <%= link_to logout_user_path do %>
+            <%= link_to logout_path, confirm: 'Are you sure?', method: :delete do %>
               <%= current_user.email %> <%= fa_icon "sign-out" %> Sign Out
             <% end %>
           <% end %>
         </li>
         <li>
-          <%= link_to register_user_path do %>
+          <%= link_to register_path do %>
             <%= fa_icon "user" %> Register
           <% end %>
         </li>
