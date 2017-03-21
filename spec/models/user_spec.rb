@@ -52,6 +52,14 @@ RSpec.describe User, type: :model do
       user.save
       expect(user.errors.full_messages).to include(/Password is too short/)
     end
-
   end
+
+  describe '.authenticate_with_credentials' do
+    it 'should have a return equal to instance of user' do
+      user.save!
+      user_return = User.authenticate_with_credentials(user.email, user.password)
+      expect(user_return).to_not be_nil
+    end
+  end
+
 end
