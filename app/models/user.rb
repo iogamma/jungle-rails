@@ -12,8 +12,9 @@ class User < ActiveRecord::Base
     length: { minimum: 6}
 
   def self.authenticate_with_credentials(email, password)
-    email_stripped = email.strip
-    @user = User.find_by_email(email_stripped)
+    user = User.arel_table
+    email_filtered = email.strip.prepend('%').concat('%')
+    @user = User.where(user[:email].matches(email_filtered))[0]
     if @user && @user.authenticate(password)
       return @user
     else
@@ -22,5 +23,3 @@ class User < ActiveRecord::Base
   end
 
 end
-
-

@@ -29,4 +29,3 @@ class SessionsController < ApplicationController
                                    :password)
     end
 end
-

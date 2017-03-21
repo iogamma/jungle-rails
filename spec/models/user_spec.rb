@@ -68,6 +68,12 @@ RSpec.describe User, type: :model do
       expect(user_return).to_not be_nil
     end
 
+    it 'should not return nil if email is in a different case' do
+      user.save!
+      email = user.email.swapcase
+      user_return = User.authenticate_with_credentials(email, user.password)
+      expect(user_return).to_not be_nil
+    end
   end
 
 end
