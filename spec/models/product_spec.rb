@@ -2,46 +2,42 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
 
-  before(:each) do
-    @category = Category.new(name: "toy")
-    @product = Product.new(name: "bunnies", price_cents: 2345, quantity: 2, category: @category)
-  end
-	
+  let(:category) { Category.new(name: "toy") }
+  let(:product) { Product.new(
+                    name: "bunnies",
+                    price: 2345,
+                    quantity: 2,
+                    category: category) }
 
   describe 'Validations' do
 
     it 'there should be no errors for a product with all attributes present' do
-      @product.save!
-      expect(@product).to be_valid
+      product.save!
+      expect(product).to be_valid
     end
 
-    it 'should fail for for empty product name' do
-      @product.name = nil 
-      expect{@product.save!}.to raise_error(ActiveRecord::RecordInvalid)
-      error_blank = @product.errors.full_messages.include?("Name can't be blank")
-      expect(error_blank).to be true 
+    it 'matches the cannot be blank error message for for empty product name' do
+      product.name = nil
+      product.save
+      expect(product.errors.full_messages).to include("Name can't be blank")
     end
 
-    it 'should fail for for empty product price' do
-      @product.price_cents = nil 
-      expect{ @product.save! }.to raise_error(ActiveRecord::RecordInvalid) 
-byebug
-      error_blank = @product.errors.full_messages.include?("Price can't be blank")
-      expect(error_blank).to be true 
+    it 'matches the cannot be blank error message for for empty product quantity' do
+      product.price_cents = nil
+      product.save
+      expect(product.errors.full_messages).to include("Price can't be blank")
     end
 
-    it 'should fail for for empty product quantity' do
-      @product.quantity = nil 
-      expect{ @product.save! }.to raise_error(ActiveRecord::RecordInvalid) 
-      error_blank = @product.errors.full_messages.include?("Quantity can't be blank")
-      expect(error_blank).to be true 
+    it 'matches the cannot be blank error message for for empty product price' do
+      product.quantity = nil
+      product.save
+      expect(product.errors.full_messages).to include("Quantity can't be blank")
     end
 
-    it 'should fail for for empty product name' do
-      @product.category= nil 
-      expect{ @product.save! }.to raise_error(ActiveRecord::RecordInvalid) 
-      error_blank = @product.errors.full_messages.include?("Category can't be blank")
-      expect(error_blank).to be true
+    it 'matches the cannot be blank error message for for empty product category' do
+      product.category= nil
+      product.save
+      expect(product.errors.full_messages).to include("Category can't be blank")
     end
   end
 end
