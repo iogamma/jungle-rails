@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
     length: { minimum: 6}
 
   def self.authenticate_with_credentials(email, password)
-    @user = User.find_by_email(email)
+    email_stripped = email.strip
+    @user = User.find_by_email(email_stripped)
     if @user && @user.authenticate(password)
       return @user
     else

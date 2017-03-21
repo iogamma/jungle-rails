@@ -55,11 +55,19 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    it 'should have a return equal to instance of user' do
+    it 'should not return nil when correct user email and password is passed' do
       user.save!
       user_return = User.authenticate_with_credentials(user.email, user.password)
       expect(user_return).to_not be_nil
     end
+
+    it 'should not return nil if there are spaces before and/or after email' do
+      user.save!
+      email = user.email.prepend("     ").concat("     ")
+      user_return = User.authenticate_with_credentials(email, user.password)
+      expect(user_return).to_not be_nil
+    end
+
   end
 
 end
