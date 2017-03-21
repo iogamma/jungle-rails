@@ -16,7 +16,7 @@ RSpec.feature "AddToCarts", type: :feature, js: true do
     end
   end
 
-  scenario "They see product detail page" do
+  scenario "They should see an 1 item to an empty cart" do
     # ACT
     visit root_path
     page.first('article.product').find_link(text: 'Add').click
