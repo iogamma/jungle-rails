@@ -22,6 +22,8 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
   page.find_link(@category.products.first.name).click
 
   # DEBUG / VERIFY
+  # wait long enough for screen capture
+  # sleep 2
   # save_screenshot
   expect(page.has_css?('.product-detail'))
   expect(page).to have_content(@category.products.first.name)
