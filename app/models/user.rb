@@ -11,11 +11,12 @@ class User < ActiveRecord::Base
   validates :password,
     length: { minimum: 6}
 
-  def self.authenticate_with_credentials(email, password)
+  def self.authenticate_with_credentials(params)
     user = User.arel_table
-    email_filtered = email.strip.prepend('%').concat('%')
+    email_filtered = params[:email].strip
+    #prepend('%').concat('%')
     @user = User.where(user[:email].matches(email_filtered))[0]
-    if @user && @user.authenticate(password)
+    if @user && @user.authenticate(params[:password])
       return @user
     else
       return nil
