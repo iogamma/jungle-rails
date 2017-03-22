@@ -9,11 +9,14 @@
       <tr>
         <td><%= product.description %></td>
       </tr>
-    <% if product.reviews.average(:rating) %>
       <tr>
-        <td>Average Rating: <%= number_with_precision product.reviews.average(:rating), {precision: 1} %></td>
+        <% if product.reviews.average(:rating) %>
+          <td><strong>Average Rating: <%= number_with_precision product.reviews.average(:rating), {precision: 1} %></strong></td>
+          <% else %>
+            <td><strong>No Ratings Yet</strong></td>
+        <% end %>
       </tr>
-    <% end %>
+
     </tbody>
   </table>
   <footer class="actions">

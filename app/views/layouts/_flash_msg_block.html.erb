@@ -2,7 +2,7 @@
   <% flash.keys.each do |k| %>
     <% if k == 'notice' %>
       <div class="alert alert-success">
-    <% elsif k == 'alert' %>
+    <% elsif k == 'alert' || k == 'error' %>
       <div class="alert alert-danger">
     <% end %>
         <span><%= flash[k] %></span>

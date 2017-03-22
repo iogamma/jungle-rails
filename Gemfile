@@ -56,18 +56,13 @@ group :development do
   gem 'spring'
 end
 
-group :test do
-  gem 'capybara'
-  gem 'poltergeist'
-  gem 'database_cleaner'
-end
-
 group :production do
   gem 'newrelic_rpm'
   gem 'rails_12factor'
 end
 
 group :test do
+  gem 'poltergeist'
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'database_cleaner', '~> 1.5'
   gem 'faker', '~> 1.6.1'
