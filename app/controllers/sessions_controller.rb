@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
     render :new
   end
   def create
-    if user = User.authenticate_with_credentials(params[:email], params[:password])
+    puts user_params
+    if user = User.authenticate_with_credentials(user_params)
       session[:user_id] = user.id
       flash[:notice] = "You are now logged in."
       redirect_to root_path

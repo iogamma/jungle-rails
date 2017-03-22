@@ -1,0 +1,11 @@
+<% unless flash.empty? %>
+  <% flash.keys.each do |k| %>
+    <% if k == 'notice' %>
+      <div class="alert alert-success">
+    <% elsif k == 'alert' %>
+      <div class="alert alert-danger">
+    <% end %>
+        <span><%= flash[k] %></span>
+      </div>
+  <% end %>
+<% end %>

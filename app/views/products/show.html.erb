@@ -4,16 +4,7 @@
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
   </header>
 
-<% unless flash.empty? %>
-  <%= puts flash.keys %>
-  <div class="alert alert-success">
-    <ul>
-      <% flash.keys.each do |k| %>
-        <li><%= flash[k] %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+  <%= render(partial: "/layouts/flash_msg_block") %>
 
   <article class="product-detail">
     <div class="row">

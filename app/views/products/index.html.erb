@@ -4,15 +4,7 @@
     <h1>Products</h1>
   </header>
 
-<% unless flash.empty? %>
-  <div class="alert alert-success">
-    <ul>
-      <% flash.keys.each do |k| %>
-        <li><%= flash[k] %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+  <%= render(partial: "/layouts/flash_msg_block") %>
 
   <div class="products">
     <%= render @products %>
