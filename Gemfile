@@ -46,6 +46,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara', '~> 2.5'
   gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'faker', '~> 1.6.1'
 end
 
 group :development do
@@ -65,5 +66,4 @@ group :test do
   gem 'poltergeist'
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'database_cleaner', '~> 1.5'
-  gem 'faker', '~> 1.6.1'
 end
